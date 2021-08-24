@@ -1,0 +1,83 @@
+Completed Tasks:
+----------------
+
+1. TLS Version checking in PAT,PROD Environments.
+2. Environments: DEV/SIT/BAT,PAT,PROD,DR.
+3. ECR Change in that change we have to up the nodeagents one by one in PROD,PAT Environments.
+4. DMGR Down task completed.
+5. Some ChangeTask we have to completed (START/STOP Servers)
+6. Accept Pageouts.
+7. CyberArk Password for Accesing PROD/DR Environments.
+8. We have to raised PMR and Close the Tickets.
+9. OnCall support for Weekends.
+10.TimeSheet Updation for Every Week.
+11. Daily DMH Call is there. In that call we discussed about Changes,Incidents,IncidentTasks,ProblemTickets,Aceesing Issues.
+12. Enabling TLSv1.2 in WebSphere level in DEV Environment.
+13. We have ServiceNow Ticketing tool to monitor the Incidents,Changes,IncidentTasks,ProblemTickets.
+14. Enabling TLSv1.2 in Webserver level in PAT Environment.
+15. When i am trying to startNodeagents it shows error i was checked startServer.log and 
+    engaged OCG team (operation coordination group to engage unix team to reboot the  server. 
+
+16. i had worked TLSv1.2 checking in IHS level Environments: PAT,PROD,DR) [ Dated: 21st june 2021 TASK ]
+    After rebooting the server i was started nodeagent and server it works fine. Environment :PROD.
+17. i had worked base file system /opt ===> 91% full in Prod
+
+Notes:  cleared [ > filename ] FFDC logs,SysytemOut.logs,SystemErr.logs and zip the pega files by using the command gzip <FileName>
+
+after all this is done now /opt occupies 60 % space.
+
+18. i had worked base file system /opt ===> 100 % full in Prod
+
+Notes:  cleared FFDC logs,SysytemOut.logs,SystemErr.logs and zip the dump  files by using the command gzip <FileName> 
+Path : cd /usr/opt/td/logs/dump ====> we have to execute gzip command gzip <FileName>
+
+after all this is done now /opt occupies 54% space.
+
+some commands we are using du -sm *|sort -n | tail 
+			   du -sm *|sort -n | head
+df -h .
+df -k .
+
+find /logs/ -type f -mtime +7 -exec tar -czf olderlogs.tar.gz {} \;
+
+find /var/dtpdev/tmp/ -type f -mtime +15 ===> purpose of this command is how much space is occupy the largest files it shows .
+
+df -h .====> how much space is occupies the /opt base file system.
+
+19. i will deleted the files on 
+
+1. /opt/WASupdates/tmp
+2. /opt/rcm/dashtmp/cache/cSveKoh7Ug_5sBd81xpK49H
+3. /opt/td/logs/dump/nodeagent
+
+in the above paths i will delete the files by using the command rm -Rf *
+
+beacuse, /opt occupies 100 GB Space, so based on the user confirmation only i deleted the files.
+
+20. Accept Pageouts and work with Pageout
+21. i accepted Change Requests  from AIX Team i.e. PAT,PROD,DEV/SIT.
+
+22. SSL Renewal Certificates [ Some signers are missing ]
+
+Steps:
+-----
+
+10.126.177.172 - /usr/opt/WebSphere/AppServer/java/jre/lib/security/cacerts and /usr/opt/WebSphere/AppServer/java_1.7.1_64/jre/lib/security/cacerts - EntrustCertificationAuthorityL1K.cer and EntrustCertificationAuthorityL1M.cer
+Please confirm if this IP is not in scope of CHG0780177.
+
+Instructions,
+These are IPs in this change, make sure you have SSH access to all these IPs.
+
+10.156.177.114
+10.156.177.113
+10.156.177.112
+10.156.177.111
+
+SSH to 10.126.48.60
+cd /opt/ops_mw/ops_mw_scripts/mw_toolbox
+
+create a file with all IPs (e.g. was1_list)
+
+./run_mw_toolbox.sh was1_list add_ca was
+
+

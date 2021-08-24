@@ -1,0 +1,67 @@
+two servers we are having BDC,SOC
+private key uses AUGSTE Servers
+
+how to include private key 
+
+New Putty Session ====>SSH
+
+
+logs : cd /td/logs
+installed Apps : cd /webAs/InstalledApps
+not Available /usr/opt/WebSphere/AppServer/profiles/ProfileName/InstalledApps
+webserver: cd /tdlogs/httpd
+ps -ef | grep httpd
+/usr/opt/HTTPServer/bin/httpd -d  /usr/opt/HTTPServer -f conf/admin.conf -k start
+
+krypto team provide the certificate but you are using Self signed certificate you are the responsible for that certificate
+most of the time TD Certificate we are using
+
+WebServer: /usr/opt/HTTPServer/conf
+ls -lrt
+Plugins : /usr/opt/WebSphere/Plugins/config/ihs_waswebvm-example_httpd.conf
+grep -i kdb ihs_waswebvm-eambpee_httpd.con
+under /usr/opt/HTTPServer/conf==> cd ihs_waswebvm-eambpe_vhosts
+cat 443_vhosts.conf
+cat vh_ssl.conf
+under /usr/opt/HTTPServer/conf==> cd /usr/opt/WebSphere/Plugin/config/ihs_waswebvm-eambpe/Plugin-cfg.xml
+cd /td/logs/httpd ===> tail -100f /td/logs/httpd/ihs_waswebvm-eambpe_http_plugin.conf
+
+cd /td/logs/httpd/
+
+
+Crypto 
+10.126.48.60
+10.156.48.64
+
+scp -r filename userid@remoteservername
+
+
+
+get CyberArc Acess 
+
+Dmgr Console : 10.207.177.107:19001/ibm/console
+PFCTF File is important
+PFSTP sourceName IP ADDRESS
+10.126.233.220
+
+cd /td/logs/HTTPServer
+
+chmod 755 
+UAIRF 
+under ServiceNow/servicecatalog
+in the service catalog its Available (Open Text Exceed 14/64)
+
+PMR : https://www.ibm.com/mysupport/s/createrecord newcase
+
+
+
+
+Incidents:
+https://tdbfg.service-now.com/nav_to.do?uri=%2Fincident_list.do%3Fsysparm_view%3D%26sysparm_first_row%3D1%26sysparm_query%3DstateIN1,2,-3%5Eassignment_group.nameSTARTSWITHVEN-IBM-WAS%20Support%26sysparm_clear_stack%3Dtrue
+ 
+Incident Tasks:
+https://tdbfg.service-now.com/nav_to.do?uri=%2Fincident_task_list.do%3Fsysparm_view%3D%26sysparm_first_row%3D1%26sysparm_query%3DstateIN0,1,2%5Eassignment_group%3D5db907fadbcea0d02d2cf9d4e2961972%26sysparm_clear_stack%3Dtrue
+ 
+Catalogue Tasks:
+https://tdbfg.service-now.com/nav_to.do?uri=%2Ftask_list.do%3Fsysparm_view%3D%26sysparm_first_row%3D1%26sysparm_query%3Dassignment_group%3D5db907fadbcea0d02d2cf9d4e2961972%5Estate%3D1%5EORstate%3D-5%5EORstate%3D2%5Esys_class_name%3Dsc_task%26sysparm_clear_stack%3Dtrue
+

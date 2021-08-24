@@ -1,0 +1,123 @@
+Fix (APAR):  PH31288
+
+Status:  Fix
+
+Release:  9.0.5.5
+
+Operating System:  AIX,HP-UX,IBM i,Linux,Solaris,Windows,z/OS
+
+Supersedes Fixes:  
+
+CMVC Defect:  xxxxxx
+
+Byte size of APAR:  403396
+
+Date: 2021-06-22
+
+Abstract:  j2ca0045e -tolerating the connection error occurred event during the matchmanagedconnention
+
+Description/symptom of problem:  
+PH31288 resolves the following problem:
+
+ERROR DESCRIPTION:
+J2CA0045E: Connection not available while invoking method       
+createOrWaitForConnection for resource ...                      
+                                                                
+Tolerating the                                                  
+connection error occurred event during the                      
+matchManagedConnention. The connection pool when processing the 
+event is losing one or more managed connection during the error 
+event.                                                          
+
+LOCAL FIX:
+Tuned the connection pool settings on unused timeout, Reap time 
+and minimum connection.                                         
+                                                                
+Example:                                                        
+Unused timeout 86400 sec. ->                                    
+60 sec.                                                         
+Reap time 180 sec. > 30 sec.                                    
+Minimum connections 5 ->                                        
+0                                                               
+
+PROBLEM SUMMARY:
+
+USERS AFFECTED:
+ All users of IBM WebSphere Application
+Server using Commerce Container
+
+PROBLEM DESCRIPTION:
+J2CA0045E: Connection not available
+while invoking method
+createOrWaitForConnection  for
+resource eis/JCAEmail
+
+RECOMMENDATION:
+None
+
+While using resource eis/JCAMail, if connection are marked by
+the resource adapter as a bad connection in the
+matchManagedConnection code and the resource adapter uses
+connection error event in this method, connection can be
+leaked resulting in J2CA0045E
+[2/1/21 13:51:45:442 CET] 00001114 FreePool      E
+J2CA0045E: Connection not available while invoking method
+createOrWaitForConnection for resource eis/JCAEmail.
+[2/1/21 13:51:45:444 CET] 00001114 CommerceSrvr  E
+JMSMessageBean sendImmediate CMN9907E: A resource exception
+occurred during processing: "{0}".
+javax.resource.ResourceException:
+com.ibm.websphere.ce.j2c.ConnectionWaitTimeoutException:
+J2CA1010E: Connection not available; timed out waiting for 180
+seconds.
+at
+com.ibm.commerce.messaging.adapters.jcaemail.JCAEmailConnectionF
+actory.getConnection(JCAEmailConnectionFactory.java:120)
+at
+com.ibm.commerce.messaging.objects.JMSMessageBean.sendImmediate(
+JMSMessageBean.java:236)
+at
+com.ibm.commerce.messaging.objects.EJSRemoteStatelessJMSMessage_
+d6d5624d.sendImmediate(EJSRemoteStatelessJMSMessage_d6d5624d.jav
+a:71)
+
+PROBLEM CONCLUSION:
+The connection management code now handles the connection       
+error event if it occurs during ra.matchManagedConnection()     
+                                                                
+The fix for this APAR is targeted for inclusion in fix pack     
+8.5.5.20 and 9.0.5.8. For more information, see 'Recommended    
+Updates                                                         
+for                                                             
+WebSphere Application Server':                                  
+https://www.ibm.com/support/pages/node/715553                   
+
+
+Directions to apply fix:  
+Install Fix to all WebSphere installations unless special instructions are included below.
+
+Special Instructions: None
+
+NOTE:
+The user must:
+* Logged in with the same authority level when unpacking a fix, fix pack or refresh pack.
+* Be at V1.8.5 or newer of the Installation Manager. Certain iFixes may require a newer version of the Installation Manager and the Installation Manager will inform you during the installation process if a newer version is required.
+
+The IBM Information Center can provide details, if needed, on the use of the Installation Manager to apply the iFixes.
+http://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.5/com.ibm.cic.agent.ui.doc/helpindex_imic.html.  Shutdown WebSphere Application Server before applying the iFixes.  Restart WebSphere Application Server after applying the iFixes.
+
+Directions to remove fix:  
+
+The IBM Information Center can provide details, if needed, on the use of the Installation Manager to remove the iFixes.
+http://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.5/com.ibm.cic.agent.ui.doc/helpindex_imic.html.  Shutdown WebSphere Application Server before removing the iFixes.  Restart WebSphere Application Server after removing the iFixes.
+
+Directions to re-apply fix:  
+1) Shutdown WebSphere Application Server.
+
+2) Follow the Fix instructions to apply the fix.
+
+3) Restart WebSphere Application Server.
+
+
+
+Additional Information:  

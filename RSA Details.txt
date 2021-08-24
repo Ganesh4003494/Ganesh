@@ -1,0 +1,82 @@
+My Challange Word : WHALE
+ACF2 Id: aganes2
+RSA Token Pin:9849
+CyberArk RSA Pin:738244
+password:amirin03
+
+PROD Password: amirin03
+PAT Password:  amirin40
+Dev Password:  amirin40
+
+TD Mandatory Course Url :https://td.sumtotal.host/Broker/public/homerealmdiscovery.aspx?wtrealm=https%3a%2f%2fTD.sumtotal.host%2fcore%2f&wctx=&wa=wsignin1.0&whr=&ReturnUrl=http%3a%2f%2ftd.sumtotal.host%2fBroker%2fToken%2fSaml11.ashx%3fwa%3dwsignin1.0%26wtrealm%3dhttps%253a%252f%252fTD.sumtotal.host%252fcore%252f%26wreply%3dhttp%253a%252f%252ftd.sumtotal.host%252fCore%252fdash%252fhome%252flm
+DMH Call WebEx Link: https://ibm.webex.com/meet/rookarai
+
+TD Login Url : https://ven-ng.ras.tdbank.ca
+
+Mail Url : https://gd.mail.ibm.com/verse
+Password:  amirineniganeshibm143
+
+Slack Url: https://ibm.enterprise.slack.com
+
+TD Mail Url : https://pod51127.outlook.com
+
+https://adlabportal.tdbfg.com/SelfServe.asp
+
+https://adlabportal.tdbfg.com/
+lamsd (Stephen Lam)
+
+Server Details Url: https://tdbfg.service-now.com/cmdb_ci_server_list.do?sysparm_first_row=1&sysparm_query=GOTOhost_name%3e%3dsigdtapzlxv0&sysparm_query_encoded=GOTOhost_name%3e%3dsigdtapzlxv0&sysparm_view=
+
+TD login Url: https://ven-ng.ras.tdbank.ca/logon/LogonPoint/tmindex.html
+
+TD Emil Id: Ganesh.A@td.com
+
+Request Raise Url: https://tdbfg.service-now.com/sh?id=npid_home
+
+Service Now Url: https://tdbfg.service-now.com
+
+Putty Public & Privatekey PassPhrase: amirinenigan
+
+TDBank Financial: https://tdbfg.hosted.xmatters.com
+
+
+Prod VDI Url: https://prod.vdi.ras.tdbank.ca/
+
+
+
+All Servers link: http://posadm31.tdbank.ca/team/platform_listing
+
+CyberArk Url: https://enterprisepv.td.com/passwordvault/auth/radius
+
+SOC: 10.126.48.60
+BDC: 10.156.48.64
+
+
+Incidents:
+https://tdbfg.service-now.com/nav_to.do?uri=%2Fincident_list.do%3Fsysparm_view%3D%26sysparm_first_row%3D1%26sysparm_query%3DstateIN1,2,-3%5Eassignment_group.nameSTARTSWITHVEN-IBM-WAS%20Support%26sysparm_clear_stack%3Dtrue
+ 
+Incident Tasks:
+https://tdbfg.service-now.com/nav_to.do?uri=%2Fincident_task_list.do%3Fsysparm_view%3D%26sysparm_first_row%3D1%26sysparm_query%3DstateIN0,1,2%5Eassignment_group%3D5db907fadbcea0d02d2cf9d4e2961972%26sysparm_clear_stack%3Dtrue
+ 
+Catalogue Tasks:
+https://tdbfg.service-now.com/nav_to.do?uri=%2Ftask_list.do%3Fsysparm_view%3D%26sysparm_first_row%3D1%26sysparm_query%3Dassignment_group%3D5db907fadbcea0d02d2cf9d4e2961972%5Estate%3D1%5EORstate%3D-5%5EORstate%3D2%5Esys_class_name%3Dsc_task%26sysparm_clear_stack%3Dtrue
+
+
+LDAP Error Link:
+
+https://www.ibm.com/support/pages/how-resolve-ldap-error-javaxnetsslsslhandshakeexception-javasecuritycertcertificateexception-no-subject-alternative-dns-name-matching-ip-address-found
+
+using cyberark password we type below:
+su - wasadm
+
+Kyndryl Email Link: https://login.kyndryl.net
+Kyndryl Email:Ganesh.A@Kyndryl.com
+Kyndryl Password: amirineniganeshibm4003
+
+Kyndryl Outlook Url : https://login.microsoftonline.com/common/oauth2/authorize?client_id=00000002-0000-0ff1-ce00-000000000000&redirect_uri=https%3a%2f%2foutlook.office365.com%2fowa%2f&resource=00000002-0000-0ff1-ce00-000000000000&response_mode=form_post&response_type=code+id_token&scope=openid&msafed=0&msaredir=0&client-request-id=88d7aa2b-b06b-b84e-31cf-9f34df5d4e6c&protectedtoken=true&claims=%7b%22id_token%22%3a%7b%22xms_cc%22%3a%7b%22values%22%3a%5b%22CP1%22%5d%7d%7d%7d&domain_hint=kyndryl.com&nonce=637619980591273015.3bba48ca-521d-41da-8ecf-3976230a5e76&state=Dcs5EoAgDEBR0At4EYQQIHCcsNi4MGPjcHsp3u--FEKs0zJJMyMoIAVIKRqfwBIa8DvmzC4WVt5CVQ4qq9jKoTBRsGjYNwpyvpvuH-tzPPUd1176_QM&sso_nonce=AwABAAAAAAACAOz_BAD0_8A1eVcX-dfFuKzBj6wues6Ytz846StzhhFNdP5WyRIhBVorNI3rlZMxC6zf1wmJiGbONHaO1dwgvLQ_WDJ0BdkgAA&mscrid=88d7aa2b-b06b-b84e-31cf-9f34df5d4e6c
+Kyndryl Outlook: Ganesh.A@kyndryl.com
+Kyndryl Outlook Password: !12Amirineni4003
+Kyndryl Transition Id: Ganesh.A@ocean.ibm.com
+Kyndryl Transition password : ganeshamirineniibm4003
+
+

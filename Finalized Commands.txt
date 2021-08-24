@@ -1,0 +1,274 @@
+InstallationManager:
+-------------------
+
+./imcl install <IM Offering ID> -repositories <Repositories Path> -acceptLicense -InstallationDirectory <Path of IM> -dL <IMShared Path> 
+
+WAS Installation:
+----------------
+
+./imcl listAvailablePackages -repositories <repositoriesPath> after that we have findout offeringId
+
+./imcl install <OfferingID of WAS> -repositories <repositories Path> -sP -acceptLicense -InstallationDirectory <Path of WAS> -dL <IMShared Path> 
+
+IHS Installation:-
+-----------------
+
+./imcl listAvailablePackages -repositories <repositoriesPath> after that we have findout offeringId
+
+./imcl install <OfferingID of IHS> -repositories <repositories Path> -sP -acceptLicense -properties user.ihs.httpPort=80 -InstallationDirectory <Path of IHS> -dL <IMShared Path> 
+
+Plugin Installation :
+---------------------
+
+./imcl listAvailablePackages -repositories <repositoriesPath> after that we have findout offeringId
+
+./imcl install <OfferingID of IHS> -repositories <repositories Path> -sP -acceptLicense -InstallationDirectory <Path of PLUGINS> -dL <IMShared Path> 
+
+FixPack :
+--------
+
+./imcl listAvailablePackages -repositories <repositoriesPath> after that we have findout offeringId
+
+./imcl install <OfferingID of FIXPACK> -repositories <repositories Path> -sP -acceptLicense -InstallationDirectory <Path of Fixpack> -dL <IMShared Path> 
+
+
+profile creation:
+-----------------
+
+Dmgr:
+----
+
+./manageprofiles.sh -create -profileName Dmgr01 -profilePath </usr/opt/WebSphere/AppServer/profiles/Dmgr01 -templatePath /usr/opt/WebSphere/AppServer/profileTemplates/management -cellName DmgrCell01 -nodeName DmgrNode01 -enableAdminSecurity true -adminUserName ABC -adminPassword Abc
+
+AppServer:
+---------
+
+ ./manageprofiles.sh -create -profileName AppServer01 -profilePath </usr/opt/WebSphere/AppServer/profiles/AppServer01 -templatePath /usr/opt/WebSphere/AppServer/profileTemplates/default -cellName AppServerCell01 -nodeName AppServerNode01
+
+Custom:
+------
+
+./manageprofiles.sh -create -profileName Custom01 -profilePath </usr/opt/WebSphere/AppServer/profiles/CustomNode01 -templatePath /usr/opt/WebSphere/AppServer/profileTemplates/managed -cellName CustomCell01 -nodeName CustomNode01
+
+
+Federation:
+----------
+
+Go to AppServer profiles under bin like cd /usr/opt/WebSphere/AppServer/profiles/AppServer01/bin
+
+./addNode.sh DmgrhostName Dmgr Soap Connector port Number -username ABC -password Abc 
+
+
+go to Customprofile bin
+
+./addNode.sh DmgrhostName Dmgr Soap Connector port Number -username ABC -password Abc 
+
+
+memory check : df -h or df -k
+
+memory usage Command: free -m
+
+cpu health checkup : top or free
+
+netstat -an | grep PortNumber
+
+ps - ef| grep PID
+
+Application accessing port number by default :9080
+Dmgr port Number by default :9060
+Dmgr soap Connector portnumber:8879
+
+cellDiscoveryport Number: 7272
+Node Discovery Port Number:7277
+
+main configuration file of  dmgr is server.xml 
+
+configuration file in WAS: Server.xml,security.xml,userRegistry.xml,pluginCfg.xml, ServerIndex.xml, virtualhost.xml etc
+
+ServerIndex.xml consists of all portnumbers we can see this xml file
+
+VirtualHost: every portnumber must and should registered under this file 
+
+3 Files. 1. admin_host 2. default_host 3. proxy_host
+
+main configuration file in webserver is httpd.conf
+
+Communication purpose we have to use Plugins .
+in PluginCfg.xml file consists of Clustermembers,Virtualhost portnumbers,Url's,Uri's,JseesionId's,CloneId's will be there.
+
+in httpd.conf consists of 46 load modules it consists of ssl loadmodule,plugin loadmodule (22 is enabled)
+
+plugin log level is error 
+
+defult log level for WAS is INFO by default
+
+WAS Path : /usr/opt/WebSphere/AppServer
+
+IHS Path: /usr/opt/HTTPServer/
+
+Plugin Path : /usr/opt/WebSphere/Plugins/
+
+analyze heap and Thread dump by using analyzer tools 
+
+cp FileName DestinationPath
+mv FileName DestinationPath
+
+cp -pr FileName FileName_bkp // backup file in the same directory
+./backupConfig.sh -nostop
+./restoreconfig.sh FileName
+./pluginMerge.sh plugin1 plugin2
+ touch fileName ====> create text file
+open the file by using the command vi filename 
+lastline of the txt file shift+g 
+
+
+Dmgr  Stop and start :   ./stopManager.sh  &&./startManager.sh 
+
+server Stop and start:   ./stopServer.sh <serverName>  &&  ./startServer.sh <serverName>
+
+Node Stop and start  :  ./stopNode.sh && ./startNode.sh
+
+WAS_HOME>/profiles/Dmgr_cellManager/bin
+
+./serverStatus.sh -all
+
+Every profile have a ssl.client.props, soap.client.props, sas.client.props  files  will be there 
+
+ProfileTemplates:
+----------------
+1.	Dmgr [Management or dmgr]
+2.	ApplicationServer [default]
+3.	Cell [cell]
+4.	Custom [managed]
+5.	Jobmanagement [management]
+6.	Adminagent [management]
+7.	secureproxy [Configuration]
+
+
+
+IHS Server Start: ./apachectl -k start -f /usr/opt/HTTPServer/conf/ihs_instance 
+IHS Server Stop : ./apachectl -k stop -f /usr/opt/HTTPServer/conf/ihs_instance
+
+Cluster Environment: combining Applicationservers  profiles and Custom profiles
+by using cluster we have to acheive SCALABILITY,HIGH AVAILABILITY,FAILOVER CONTROLS.
+
+SCALABILITY: automatically will increase load balancer.
+-----------
+HIGHAVAILABILITY: we have to eliminate peer to peer failover control.
+----------------
+FAILOVER CONTROL: unfortunately server1 will be down the request will allocate another server simultaniuosly without fail.
+----------------
+Every cluster by default one template is there 1. NONE 2. Server as template 3. convert Member as a  server
+
+<WAS_HOME>/profiles/ApplicationServerprofile/bin in that we have to use the command ./syncNode.sh Dmgr hostName Dmgr Soap ConnectorportNumber
+
+Deployment types: 1. Direct Deployment [ Admin Console] 2. Through Admin Scripts 3. Hot Deployment
+
+three ways to install WAS Product : 1. CommandLine 2. Gui Mode [ Graphical User Interface] 3.Response file.
+
+Securityoff: ./wsadmin.sh -connType NONE
+              ./securityoff
+	       $AdminConfig save 
+
+2. securityoff through security.xml enabled="false" after that restart Dmgr if any changes in that we will apply that changes
+
+Kill the process: kill -9 PID
+kill -3 PID we have to generate thread dump.
+
+heap dump extensions .phd format [ portable heap dump].
+thread dump exensions .txt format.
+
+
+ Garbagecollection: 1.optthroughput 2. optAvgPause 3. Gencon [generalization Garbage collection] 4. Balanced Gencon
+
+By default garbage collection is Gencon
+
+<WAS_HOME>/bin ./versionInfo.sh
+<WAS_HOME>/bin ./versionInfo.sh && ./historyInfo.sh
+
+777 ====> we have to given the Read,Write,Execute permission of the particular file.
+
+Read =   4
+Write =  2
+Execute= 1
+
+	
+default Java version is 1.8 
+
+now presently we are using WAS9.0.5.9 ===>java version 1.8 by default
+
+Environments : DEV,PAT,PROD,DR [ Disaster Recovery]
+
+
+JVM Logs: SystemOut.log,SystemErr.log
+Memory Logs: NativeStdOut.log,NativeStdErr.log
+
+Important Note:
+--------------
+
+1. SystemOut.log & SystemErr.log is not properly updated we will check FFDC logs
+
+Logs Path : <WAS_HOME>/profiles/ApplicationServer/logs/FFDC/xxxxxxxxxxxxxxxxxxxx.txt
+
+
+OpenSSl Command:
+----------------
+
+openssl pkcs12 -in /tmp/new/key.p12 -nodes -noderts -out /tmp//new/new.pem
+
+
+Space Alert Commands:
+---------------------
+	du -sm * | sort -nr |head
+ 	du -sm * | sort -nr |tail
+ 	cd /usr/
+ 	du -sm * | sort -nr |tail
+  	cd opt
+ 	du -sm * | sort -nr |tail
+ 	du -sm * | sort -nr |head
+ 	cd td
+	du -sm * | sort -nr |head
+  	du -sm * | sort -nr |head
+ 	cd dump
+	du -sm * | sort -nr |head
+	ls
+	ls -lrt
+ 	gzip javacore.2021*
+ 	df -k .
+	du -sh
+	ls -lrt
+	gzip heap*.txt
+ 	gzip heapdump.2021*
+ 	gzip Snap.2021*
+	ls -lrt
+	gzip core*
+  	ls-lrt
+  	ls -lrt
+ 	> core.20210621.213942.28870.0007.dmp
+ 	> core.20210622.045802.7824.0001.dmp
+  	> core.20210727.202448.11672.0001.dmp
+ 	df -k .
+ 	du
+ 	du -g .
+ 	du -sh .
+	du -sha .
+ 	du -a
+ 	du -ah .
+	ls -lrt
+	gzip heapdump.20210803.222511.16046.000*.phd
+	gzip heapdump.20210803.222511.16046.0001.phd
+	ls -lrt
+ 	gzip heapdump.20210803.222511.16046.0004.phd
+	/usr/opt/td/logs/dump $
+
+Permission Command: Chown wasadmin:newgroup filename
+---------------------------------------------------
+
+Note :
+-----
+find /logs/ -type f -mtime +7 -exec tar -czf olderlogs.tar.gz{}\;
+
+Cleared the logs : > File Name (When /opt is Full 100%)
+
+
+
